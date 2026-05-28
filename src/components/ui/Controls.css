@@ -37,12 +37,18 @@
   position: absolute;
   inset: 0;
   top: 50%;
-  height: 4px;
-  margin-top: -2px;
+  height: 6px;
+  margin-top: -3px;
   background: var(--border);
-  border-radius: 2px;
+  border-radius: 3px;
   pointer-events: none;
   overflow: hidden;
+}
+
+[data-theme='material-expressive'] .gc-slider-track {
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 5px;
 }
 
 .gc-slider-fill {
@@ -50,7 +56,7 @@
   top: 0;
   height: 100%;
   background: var(--accent);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .gc-slider-zero {
@@ -76,22 +82,34 @@
 
 .gc-range::-webkit-slider-thumb {
   appearance: none;
-  width: 14px; height: 14px;
+  width: 16px; height: 16px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--bg-panel);
-  box-shadow: 0 0 0 1px var(--accent);
+  box-shadow: none;
   cursor: grab;
   transition: transform 0.1s;
 }
 
+[data-theme='material-expressive'] .gc-range::-webkit-slider-thumb {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: none;
+}
+
 .gc-range:active::-webkit-slider-thumb { transform: scale(1.15); cursor: grabbing; }
 .gc-range::-moz-range-thumb {
-  width: 14px; height: 14px;
+  width: 16px; height: 16px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--bg-panel);
   cursor: grab;
+  box-shadow: none;
+}
+
+[data-theme='material-expressive'] .gc-range::-moz-range-thumb {
+  width: 24px; height: 24px;
+  border: none;
 }
 
 /* ════════════════════════════════

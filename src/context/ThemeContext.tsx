@@ -10,6 +10,7 @@ export type ThemeId =
   | 'cyberpunk'
   | 'retro'
   | 'ocean'
+  | 'material-expressive'
   | 'high-contrast'
 
 export interface ThemeInfo {
@@ -79,6 +80,12 @@ export const THEMES: ThemeInfo[] = [
     name: 'Ocean',
     description: 'Deep sea blues with teal bioluminescence',
     preview: { bg: '#0a1628', panel: '#0f2040', accent: '#06d6a0', text: '#b8d4e8', border: '#1a3a5c' },
+  },
+  {
+    id: 'material-expressive',
+    name: 'Material',
+    description: 'Google Material 3 Expressive — bold purple accents, no shadows',
+    preview: { bg: '#1c1b1f', panel: '#2b2930', accent: '#d0bcff', text: '#e6e1e5', border: '#49454f' },
   },
   {
     id: 'high-contrast',

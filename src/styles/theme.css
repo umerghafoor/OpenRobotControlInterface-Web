@@ -42,9 +42,9 @@ html, body, #root {
   --border:       #2d3148;
   --border-focus: #6366f1;
 
-  --panel-shadow:    0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-  --panel-shadow-lg: 0 4px 6px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
-  --header-shadow:   0 1px 0 rgba(255,255,255,0.04);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --font:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -96,9 +96,9 @@ html, body, #root {
   --border:       #e5e7eb;
   --border-focus: #4f46e5;
 
-  --panel-shadow:    0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
-  --panel-shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-  --header-shadow:   0 1px 0 rgba(0,0,0,0.06);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --scrollbar-bg:    #e5e7eb;
   --scrollbar-thumb: #d1d5db;
@@ -138,9 +138,9 @@ html, body, #root {
   --border:       #023e8a;
   --border-focus: #00b4d8;
 
-  --panel-shadow:    0 2px 8px rgba(0,0,0,0.7), 0 0 1px rgba(0,180,216,0.15);
-  --panel-shadow-lg: 0 6px 20px rgba(0,0,0,0.8), 0 0 2px rgba(0,180,216,0.2);
-  --header-shadow:   0 1px 0 rgba(0,180,216,0.15);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --font-display: 'Segoe UI', sans-serif;
 
@@ -182,9 +182,9 @@ html, body, #root {
   --border:       #003b00;
   --border-focus: #00ff41;
 
-  --panel-shadow:    0 0 0 1px #003b00, 0 2px 8px rgba(0,0,0,0.9);
-  --panel-shadow-lg: 0 0 0 1px #004d00, 0 4px 20px rgba(0,0,0,0.95);
-  --header-shadow:   0 1px 0 #003b00;
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --font:         'Courier New', 'Lucida Console', monospace;
   --font-mono:    'Courier New', 'Lucida Console', monospace;
@@ -230,9 +230,9 @@ html, body, #root {
   --border:       #094555;
   --border-focus: #268bd2;
 
-  --panel-shadow:    0 1px 4px rgba(0,0,0,0.5), 0 0 1px rgba(38,139,210,0.1);
-  --panel-shadow-lg: 0 4px 12px rgba(0,0,0,0.6);
-  --header-shadow:   0 1px 0 rgba(0,0,0,0.3);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --scrollbar-bg:    #073642;
   --scrollbar-thumb: #094555;
@@ -272,9 +272,9 @@ html, body, #root {
   --border:       #434c5e;
   --border-focus: #88c0d0;
 
-  --panel-shadow:    0 2px 6px rgba(46,52,64,0.8);
-  --panel-shadow-lg: 0 6px 16px rgba(46,52,64,0.9);
-  --header-shadow:   0 1px 0 rgba(0,0,0,0.2);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --scrollbar-bg:    #3b4252;
   --scrollbar-thumb: #4c566a;
@@ -314,9 +314,9 @@ html, body, #root {
   --border:       #3d0a3d;
   --border-focus: #ff2d78;
 
-  --panel-shadow:    0 0 0 1px #3d0a3d, 0 4px 20px rgba(0,0,0,0.9);
-  --panel-shadow-lg: 0 0 2px rgba(255,45,120,0.3), 0 8px 30px rgba(0,0,0,0.95);
-  --header-shadow:   0 1px 0 rgba(255,45,120,0.2);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --font-display: var(--font);
 
@@ -360,9 +360,9 @@ html, body, #root {
   --border:       #3d2b00;
   --border-focus: #ff9500;
 
-  --panel-shadow:    0 0 0 1px #3d2b00, 0 2px 8px rgba(0,0,0,0.8);
-  --panel-shadow-lg: 0 0 0 1px #4d3500, 0 6px 20px rgba(0,0,0,0.9);
-  --header-shadow:   0 1px 0 #3d2b00;
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --font:         'Courier New', 'Lucida Console', monospace;
   --font-mono:    'Courier New', monospace;
@@ -408,9 +408,9 @@ html, body, #root {
   --border:       #1a3a5c;
   --border-focus: #06d6a0;
 
-  --panel-shadow:    0 2px 8px rgba(0,0,0,0.6), 0 0 1px rgba(6,214,160,0.1);
-  --panel-shadow-lg: 0 6px 20px rgba(0,0,0,0.7), 0 0 2px rgba(6,214,160,0.15);
-  --header-shadow:   0 1px 0 rgba(6,214,160,0.1);
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --scrollbar-bg:    #0f2040;
   --scrollbar-thumb: #1a3a5c;
@@ -422,7 +422,68 @@ html, body, #root {
 }
 
 /* ═══════════════════════════════════════════════════
-   THEME 10 — HIGH CONTRAST
+   THEME 10 — MATERIAL EXPRESSIVE (Google M3 Expressive)
+═══════════════════════════════════════════════════ */
+[data-theme='material-expressive'] {
+  --bg-primary:      #1c1b1f;
+  --bg-secondary:    #2b2930;
+  --bg-panel:        #2b2930;
+  --bg-panel-header: #36343b;
+  --bg-hover:        #44414a;
+  --bg-active:       #4a4458;
+
+  --text-primary:   #e6e1e5;
+  --text-secondary: #cac4d0;
+  --text-muted:     #938f99;
+
+  --accent:       #d0bcff;
+  --accent-hover: #e8def8;
+  --accent-light: #381e72;
+  --accent-text:  #21005d;
+
+  --accent-glow:  rgba(208,188,255,0.25);
+
+  --success: #78dc77;
+  --warning: #e6b800;
+  --error:   #f2b8b5;
+  --info:    #7fcfff;
+
+  --border:       #49454f;
+  --border-focus: #d0bcff;
+
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
+
+  --font:      'Google Sans', 'Roboto', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-display: 'Google Sans Display', 'Google Sans', sans-serif;
+
+  --radius:    16px;
+  --radius-sm: 12px;
+  --radius-lg: 28px;
+
+  --scrollbar-bg:    #2b2930;
+  --scrollbar-thumb: #49454f;
+
+  --badge-green-bg: #1a3a1a; --badge-green-fg: #78dc77;
+  --badge-red-bg:   #4e1515; --badge-red-fg:   #f2b8b5;
+  --badge-yellow-bg:#3a2d00; --badge-yellow-fg:#e6b800;
+  --badge-blue-bg:  #003550; --badge-blue-fg:  #7fcfff;
+
+  --transition-speed: 0.2s;
+  --glow-accent: none;
+  --scanline-display: none;
+
+  /* M3 Expressive tonal surface colors */
+  --surface-tint: rgba(208,188,255,0.08);
+  --state-hover:  rgba(208,188,255,0.08);
+  --state-press:  rgba(208,188,255,0.12);
+  --state-focus:  rgba(208,188,255,0.12);
+}
+
+/* ═══════════════════════════════════════════════════
+   THEME 11 — HIGH CONTRAST
 ═══════════════════════════════════════════════════ */
 [data-theme='high-contrast'] {
   --bg-primary:      #000000;
@@ -450,9 +511,9 @@ html, body, #root {
   --border:       #444444;
   --border-focus: #ffff00;
 
-  --panel-shadow:    0 0 0 1px #444;
-  --panel-shadow-lg: 0 0 0 2px #666;
-  --header-shadow:   0 1px 0 #444;
+  --panel-shadow:    none;
+  --panel-shadow-lg: none;
+  --header-shadow:   none;
 
   --scrollbar-bg:    #0a0a0a;
   --scrollbar-thumb: #444444;
@@ -520,8 +581,7 @@ button {
   outline: none;
   transition: background var(--transition-speed, 0.15s),
               transform 0.1s,
-              opacity var(--transition-speed, 0.15s),
-              box-shadow var(--transition-speed, 0.15s);
+              opacity var(--transition-speed, 0.15s);
 }
 
 button:active { transform: scale(0.97); }
@@ -563,12 +623,8 @@ input:focus, select:focus { border-color: var(--border-focus); }
   box-shadow: var(--glow-accent, none);
 }
 
-.glow-effects .dot-green {
-  box-shadow: 0 0 0 3px rgba(52,211,153,0.3), 0 0 8px var(--success);
-}
-
 .glow-effects .panel:hover {
-  box-shadow: var(--panel-shadow-lg), 0 0 0 1px var(--border-focus);
+  outline: 1px solid var(--border-focus);
 }
 
 .glow-effects .accent-glow {
@@ -601,9 +657,7 @@ input:focus, select:focus { border-color: var(--border-focus); }
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--panel-shadow);
   overflow: hidden;
-  transition: box-shadow var(--transition-speed, 0.15s);
 }
 
 .panel-header {
@@ -677,7 +731,7 @@ input:focus, select:focus { border-color: var(--border-focus); }
   flex-shrink: 0;
 }
 
-.dot-green  { background: var(--success); box-shadow: 0 0 0 2px rgba(52,211,153,0.3); }
+.dot-green  { background: var(--success); }
 .dot-red    { background: var(--error); }
 .dot-yellow { background: var(--warning); }
 .dot-gray   { background: var(--text-muted); }

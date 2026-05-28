@@ -18,7 +18,7 @@
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--panel-shadow-lg), 0 0 60px rgba(0,0,0,0.4);
+  box-shadow: none;
   width: min(760px, calc(100vw - 24px));
   max-height: calc(100vh - 48px);
   display: flex;
@@ -150,7 +150,7 @@
 /* ── Theme grid ── */
 .sp-theme-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 8px;
 }
 
