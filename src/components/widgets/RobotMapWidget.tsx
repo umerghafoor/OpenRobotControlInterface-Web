@@ -106,7 +106,7 @@ export function RobotMapWidget() {
   function clearTrail() { trailRef.current = [] }
 
   return (
-    <Panel title="Robot Map" headerExtra={
+    <Panel title="Robot Map" icon="map" headerExtra={
       <button className="btn btn-sm" onClick={clearTrail}>Clear</button>
     }>
       <div className="robot-map">

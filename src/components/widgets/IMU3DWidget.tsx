@@ -143,7 +143,7 @@ export function IMU3DWidget() {
   }, [])
 
   return (
-    <Panel title="IMU 3D View">
+    <Panel title="IMU 3D View" icon="compass">
       <div className="imu3d">
         <div className="cube-container">
           <canvas ref={cubeRef} width={160} height={160} className="cube-canvas" />

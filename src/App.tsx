@@ -1,8 +1,7 @@
 import { useState, useCallback } from 'react'
-// Use the legacy API which includes WidthProvider + ResponsiveReactGridLayout
 import { WidthProvider, ResponsiveReactGridLayout } from 'react-grid-layout/legacy'
 import type { Layout, ResponsiveLayouts, LayoutItem } from 'react-grid-layout'
-import { Header } from '@/components/layout/Header'
+import { Header, type PanelId } from '@/components/layout/Header'
 import { PreferencesModal } from '@/components/layout/PreferencesModal'
 import { MotionControlWidget } from '@/components/widgets/MotionControlWidget'
 import { CommandControlWidget } from '@/components/widgets/CommandControlWidget'
@@ -14,27 +13,15 @@ import { RobotMapWidget } from '@/components/widgets/RobotMapWidget'
 import { DigitalTwinWidget } from '@/components/widgets/DigitalTwinWidget'
 import './App.css'
 
-// @ts-ignore — CSS module not typed
+// @ts-ignore
 import 'react-grid-layout/css/styles.css'
 // @ts-ignore
 import 'react-resizable/css/styles.css'
 
 const ResponsiveGrid = WidthProvider(ResponsiveReactGridLayout)
 
-type PanelId = 'motion' | 'command' | 'sensor' | 'video' | 'imu3d' | 'detection' | 'map' | 'twin'
+const ALL_PANELS: PanelId[] = ['motion', 'command', 'sensor', 'video', 'imu3d', 'detection', 'map', 'twin']
 
-const ALL_PANELS: { id: PanelId; label: string }[] = [
-  { id: 'motion',    label: 'Motion Control' },
-  { id: 'command',   label: 'Command Control' },
-  { id: 'sensor',    label: 'Sensor Data' },
-  { id: 'video',     label: 'Video Stream' },
-  { id: 'imu3d',     label: 'IMU 3D' },
-  { id: 'detection', label: 'Detection' },
-  { id: 'map',       label: 'Robot Map' },
-  { id: 'twin',      label: 'Digital Twin' },
-]
-
-// Default layout: 12-column grid
 const DEFAULT_LAYOUTS: ResponsiveLayouts = {
   lg: [
     { i: 'motion',    x: 0,  y: 0,  w: 3, h: 9  },
@@ -78,7 +65,7 @@ const DEFAULT_LAYOUTS: ResponsiveLayouts = {
   ],
 }
 
-const LAYOUT_KEY = 'orc-grid-layouts'
+const LAYOUT_KEY  = 'orc-grid-layouts'
 const VISIBLE_KEY = 'orc-visible-panels'
 
 function loadLayouts(): ResponsiveLayouts | null {
@@ -113,7 +100,7 @@ export function App() {
   const [visible, setVisible] = useState<Set<PanelId>>(loadVisible)
   const [layouts, setLayouts] = useState<ResponsiveLayouts>(() => loadLayouts() ?? DEFAULT_LAYOUTS)
 
-  function toggle(id: PanelId) {
+  function togglePanel(id: PanelId) {
     setVisible(prev => {
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
@@ -132,7 +119,6 @@ export function App() {
     setLayouts(DEFAULT_LAYOUTS)
   }
 
-  // Filter each breakpoint's layout to only include visible panels
   const activeLayouts: ResponsiveLayouts = {}
   for (const bp of Object.keys(layouts)) {
     activeLayouts[bp] = (layouts[bp] as LayoutItem[]).filter(
@@ -142,24 +128,12 @@ export function App() {
 
   return (
     <div className="app-root">
-      <Header />
+      <Header
+        visible={visible}
+        onTogglePanel={togglePanel}
+        onResetLayout={resetLayout}
+      />
       <PreferencesModal />
-      <div className="app-toolbar">
-        <span className="toolbar-title">Panels</span>
-        {ALL_PANELS.map(p => (
-          <button
-            key={p.id}
-            className={`toolbar-chip ${visible.has(p.id) ? 'active' : ''}`}
-            onClick={() => toggle(p.id)}
-          >
-            {p.label}
-          </button>
-        ))}
-        <span className="toolbar-spacer" />
-        <button className="toolbar-chip reset-btn" onClick={resetLayout} title="Reset layout to default">
-          Reset Layout
-        </button>
-      </div>
 
       <main className="app-main">
         <ResponsiveGrid
@@ -175,9 +149,9 @@ export function App() {
           resizeHandles={['se', 's', 'e']}
           useCSSTransforms
         >
-          {ALL_PANELS.filter(p => visible.has(p.id)).map(p => (
-            <div key={p.id} className="rgl-item">
-              <PanelComponent id={p.id} />
+          {ALL_PANELS.filter(p => visible.has(p)).map(p => (
+            <div key={p} className="rgl-item">
+              <PanelComponent id={p} />
             </div>
           ))}
         </ResponsiveGrid>

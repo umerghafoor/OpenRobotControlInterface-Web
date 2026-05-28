@@ -105,7 +105,7 @@ export function DigitalTwinWidget() {
   }
 
   return (
-    <Panel title="Digital Twin" headerExtra={
+    <Panel title="Digital Twin" icon="robot" headerExtra={
       <span className={`badge ${modeColors[state.mode]}`}>{state.mode}</span>
     }>
       <div className="twin-widget">

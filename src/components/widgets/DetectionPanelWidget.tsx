@@ -36,7 +36,7 @@ export function DetectionPanelWidget() {
     ? (summary.total / summary.framesWithResults).toFixed(2) : '0.00'
 
   return (
-    <Panel title="Detection Panel">
+    <Panel title="Detection Panel" icon="target">
       <div className="detection-panel">
         <div className="det-section">
           <div className="det-section-title">Current Frame</div>

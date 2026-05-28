@@ -1,18 +1,23 @@
 import { ReactNode } from 'react'
+import { Icon, type IconName } from '@/components/ui/Icon'
 import './PanelGrid.css'
 
 interface PanelProps {
   title: string
+  icon?: IconName
   children: ReactNode
   className?: string
   headerExtra?: ReactNode
 }
 
-export function Panel({ title, children, className = '', headerExtra }: PanelProps) {
+export function Panel({ title, icon, children, className = '', headerExtra }: PanelProps) {
   return (
     <div className={`panel ${className}`}>
       <div className="panel-header">
-        <span>{title}</span>
+        <span className="panel-header-title">
+          {icon && <Icon name={icon} size={14} className="panel-header-icon" />}
+          {title}
+        </span>
         {headerExtra && <div className="panel-header-extra">{headerExtra}</div>}
       </div>
       <div className="panel-body">{children}</div>

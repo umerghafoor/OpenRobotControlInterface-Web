@@ -84,6 +84,7 @@ export function VideoStreamWidget() {
   return (
     <Panel
       title="Video Stream"
+      icon="camera"
       headerExtra={
         <div className="stream-header-actions">
           <span className={`live-dot ${stale ? 'stale' : 'live'}`} />

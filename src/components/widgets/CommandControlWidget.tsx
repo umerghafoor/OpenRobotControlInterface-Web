@@ -38,7 +38,7 @@ export function CommandControlWidget() {
   }
 
   return (
-    <Panel title="Command Control">
+    <Panel title="Command Control" icon="bolt">
       <div className="cmd-control">
         <div className="velocity-sliders">
           <div className="vel-group">

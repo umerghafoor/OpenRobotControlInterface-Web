@@ -52,7 +52,7 @@ export function SensorDataWidget() {
   ]
 
   return (
-    <Panel title="Sensor Data">
+    <Panel title="Sensor Data" icon="signal">
       <div className="sensor-table">
         {cells.map(cell => (
           <TelemetryRow key={cell.name} cell={cell} />

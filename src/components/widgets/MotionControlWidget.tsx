@@ -88,7 +88,7 @@ export function MotionControlWidget() {
   ]
 
   return (
-    <Panel title="Motion Control" headerExtra={
+    <Panel title="Motion Control" icon="joystick" headerExtra={
       <label className="pin-toggle">
         <input type="checkbox" checked={pinned} onChange={e => { setPinned(e.target.checked); if (!e.target.checked) handleStop() }} />
         Pin

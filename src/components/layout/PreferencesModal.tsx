@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useTheme, THEMES, type Preferences } from '@/context/ThemeContext'
+import { Icon } from '@/components/ui/Icon'
 import './PreferencesModal.css'
 
 export function PreferencesModal() {
@@ -30,7 +31,7 @@ export function PreferencesModal() {
       <div className="pref-modal" role="dialog" aria-label="Preferences">
         <div className="pref-header">
           <span className="pref-title">Preferences</span>
-          <button className="pref-close btn btn-sm" onClick={closePreferences} aria-label="Close">✕</button>
+          <button className="pref-close btn btn-sm" onClick={closePreferences} aria-label="Close"><Icon name="x" size={14} /></button>
         </div>
 
         <div className="pref-body">
