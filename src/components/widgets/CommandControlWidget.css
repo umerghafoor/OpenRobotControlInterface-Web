@@ -1,0 +1,18 @@
+.cmd-control { display: flex; flex-direction: column; gap: 12px; }
+
+.velocity-sliders { display: flex; flex-direction: column; gap: 10px; }
+
+.vel-group { display: flex; flex-direction: column; gap: 4px; }
+
+.vel-label { display: flex; align-items: center; justify-content: space-between; }
+
+.vel-slider {
+  width: 100%;
+  accent-color: var(--accent);
+  height: 6px;
+  cursor: pointer;
+}
+
+.cmd-buttons { display: flex; gap: 8px; }
+
+.cmd-input-row { display: flex; gap: 8px; align-items: center; }

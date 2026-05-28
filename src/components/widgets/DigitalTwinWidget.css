@@ -1,0 +1,45 @@
+.twin-widget { display: flex; flex-direction: column; gap: 10px; }
+
+.twin-mode-selector { display: flex; gap: 6px; }
+
+.twin-state-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.twin-row {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+}
+
+.twin-row .value.mono { font-family: var(--font-mono); font-size: 12px; }
+.twin-row .telemetry-unit { font-size: 10px; color: var(--text-muted); }
+
+.twin-battery { display: flex; align-items: center; gap: 8px; }
+
+.batt-bar {
+  flex: 1; height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.batt-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+
+.twin-status { display: flex; align-items: center; gap: 8px; }
+.twin-status .value { font-family: var(--font-mono); font-size: 12px; }
+
+.twin-sim-controls {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+}
+
+.sim-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.sim-row input[type=range] { flex: 1; accent-color: var(--accent); }
+.sim-val { font-family: var(--font-mono); font-size: 11px; width: 38px; text-align: right; color: var(--text-secondary); }

@@ -1,0 +1,35 @@
+.imu3d { display: flex; flex-direction: column; gap: 12px; }
+
+.cube-container {
+  display: flex; justify-content: center; align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px;
+}
+
+.cube-canvas { display: block; }
+
+.imu-graphs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mini-graph {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mini-graph-header { display: flex; justify-content: space-between; align-items: center; }
+
+.mini-graph-label { font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+.mini-graph-value { font-size: 11px; font-family: var(--font-mono); color: var(--text-secondary); }
+
+.mini-graph-canvas { width: 100%; height: 36px; display: block; }

@@ -1,0 +1,121 @@
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-toolbar {
+  height: 40px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.toolbar-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+.toolbar-chip {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.toolbar-chip.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.toolbar-spacer { flex: 1; }
+
+.reset-btn {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.reset-btn:hover {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.app-main {
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+}
+
+/* ── react-grid-layout overrides ── */
+
+.rgl-grid {
+  /* let RGL manage its own width */
+}
+
+/* Each grid item: full height, panel fills it */
+.rgl-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.rgl-item > .panel {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.rgl-item > .panel > .panel-body {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* Drag handle: show grab cursor only on the header */
+.panel-header {
+  cursor: grab;
+}
+
+.panel-header:active {
+  cursor: grabbing;
+}
+
+/* Resize handle styling */
+.react-resizable-handle {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.rgl-item:hover .react-resizable-handle {
+  opacity: 1;
+}
+
+.react-resizable-handle::after {
+  border-color: var(--accent) !important;
+}
+
+/* Placeholder shown while dragging */
+.react-grid-placeholder {
+  background: var(--accent) !important;
+  opacity: 0.12 !important;
+  border-radius: var(--radius) !important;
+  border: 2px dashed var(--accent) !important;
+}

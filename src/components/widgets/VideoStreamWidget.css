@@ -1,0 +1,108 @@
+.stream-widget { display: flex; flex-direction: column; gap: 8px; }
+
+.stream-tabs { display: flex; gap: 4px; }
+
+.stream-tab {
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.stream-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.stream-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #0a0a0a;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stream-viewport:active { cursor: grabbing; }
+
+.stream-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  user-select: none;
+  transition: opacity 0.3s;
+}
+
+.stream-img.stale { opacity: 0.4; }
+
+.stream-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+  font-size: 13px;
+}
+
+.stream-placeholder-icon { font-size: 32px; }
+.stream-placeholder-sub { font-size: 11px; color: #444; }
+
+.stream-overlay-topic {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #ccc;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.stream-zoom-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zoom-label { font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); width: 40px; text-align: center; }
+
+.stream-header-actions { display: flex; align-items: center; gap: 8px; }
+
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.live-dot.live {
+  background: var(--success);
+  animation: pulse 1.5s infinite;
+}
+
+.live-dot.stale { background: var(--text-muted); }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(16,185,129,0); }
+}
+
+.fps-badge, .res-badge {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}

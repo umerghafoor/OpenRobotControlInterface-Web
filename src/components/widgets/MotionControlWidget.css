@@ -1,0 +1,43 @@
+.motion-control { display: flex; flex-direction: column; gap: 12px; }
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 4px;
+  justify-content: center;
+}
+
+.dpad-btn {
+  width: 64px; height: 64px;
+  border-radius: var(--radius);
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 22px;
+  display: flex; align-items: center; justify-content: center;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.1s, transform 0.08s;
+}
+
+.dpad-btn:hover { background: var(--bg-active); }
+.dpad-btn.active, .dpad-btn:active { background: var(--accent); color: white; transform: scale(0.94); }
+.dpad-center { background: var(--bg-secondary); border-color: var(--border); font-size: 16px; }
+.dpad-center:hover { background: var(--error); color: white; }
+
+.spin-buttons { display: flex; gap: 8px; }
+.spin-btn { flex: 1; height: 40px; font-size: 13px; width: auto; }
+
+.slider-group { display: flex; flex-direction: column; gap: 8px; }
+.slider-row { display: flex; align-items: center; gap: 8px; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--accent); }
+.slider-row .value { width: 38px; text-align: right; font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
+.slider-row .label { width: 70px; flex-shrink: 0; }
+
+.pin-toggle {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12px; cursor: pointer; color: var(--text-secondary);
+  font-weight: 500;
+}
+.pin-toggle input { accent-color: var(--accent); }

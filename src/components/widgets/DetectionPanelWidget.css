@@ -1,0 +1,46 @@
+.detection-panel { display: flex; flex-direction: column; gap: 12px; }
+
+.det-section { display: flex; flex-direction: column; gap: 8px; }
+
+.det-section-title {
+  font-size: 11px; font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.det-current { display: flex; flex-direction: column; gap: 6px; }
+
+.det-row { display: flex; align-items: center; gap: 8px; }
+.det-row .label { width: 90px; flex-shrink: 0; }
+.det-row .value { font-family: var(--font-mono); font-size: 13px; color: var(--text-primary); }
+.det-row .value.mono { font-size: 11px; color: var(--text-secondary); }
+
+.conf-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
+
+.conf-bar {
+  flex: 1; height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.conf-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.2s;
+}
+
+.conf-pct { font-size: 11px; font-family: var(--font-mono); color: var(--text-secondary); width: 42px; text-align: right; }
+
+.det-empty {
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+.det-divider {
+  height: 1px;
+  background: var(--border);
+}
