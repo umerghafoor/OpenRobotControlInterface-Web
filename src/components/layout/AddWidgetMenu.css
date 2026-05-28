@@ -35,7 +35,7 @@
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
-  z-index: 800;
+  z-index: 500;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);

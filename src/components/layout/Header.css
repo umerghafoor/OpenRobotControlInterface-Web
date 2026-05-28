@@ -8,8 +8,9 @@
   padding: 0 12px;
   gap: 12px;
   flex-shrink: 0;
-  z-index: 100;
-  overflow: hidden;
+  z-index: 200;
+  /* overflow: hidden removed — dropdowns anchored inside header need to escape */
+  position: relative;
 }
 
 /* ── Brand ── */
@@ -54,6 +55,7 @@
   align-items: center;
   gap: 4px;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   min-width: 0;
   padding: 0 8px;
