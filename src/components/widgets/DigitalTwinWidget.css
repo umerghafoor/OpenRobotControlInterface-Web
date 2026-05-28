@@ -1,6 +1,7 @@
-.twin-widget { display: flex; flex-direction: column; gap: 10px; }
+.twin-widget { display: flex; flex-direction: column; gap: 8px; }
 
-.twin-mode-selector { display: flex; gap: 6px; }
+.twin-mode-selector { display: flex; gap: 5px; flex-wrap: wrap; }
+.twin-mode-selector .btn { flex: 1; min-width: 0; white-space: nowrap; font-size: 12px; }
 
 .twin-state-grid {
   display: grid;
@@ -9,20 +10,41 @@
 }
 
 .twin-row {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 4px 8px;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.twin-row .value.mono { font-family: var(--font-mono); font-size: 12px; }
-.twin-row .telemetry-unit { font-size: 10px; color: var(--text-muted); }
+.twin-row .label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.twin-row .value.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.twin-row .telemetry-unit { font-size: 9px; color: var(--text-muted); }
 
 .twin-battery { display: flex; align-items: center; gap: 8px; }
+.twin-battery .label { font-size: 11px; color: var(--text-secondary); flex-shrink: 0; }
 
 .batt-bar {
-  flex: 1; height: 8px;
+  flex: 1;
+  height: 8px;
   background: var(--border);
   border-radius: 4px;
   overflow: hidden;
@@ -31,6 +53,7 @@
 .batt-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
 
 .twin-status { display: flex; align-items: center; gap: 8px; }
+.twin-status .label { font-size: 11px; color: var(--text-secondary); flex-shrink: 0; }
 .twin-status .value { font-family: var(--font-mono); font-size: 12px; }
 
 .twin-sim-controls {
@@ -40,6 +63,38 @@
   padding: 8px;
 }
 
-.sim-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-.sim-row input[type=range] { flex: 1; accent-color: var(--accent); }
-.sim-val { font-family: var(--font-mono); font-size: 11px; width: 38px; text-align: right; color: var(--text-secondary); }
+.sim-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.sim-row .label { font-size: 11px; color: var(--text-secondary); flex-shrink: 0; width: 42px; }
+.sim-row input[type=range] { flex: 1; accent-color: var(--accent); min-width: 0; }
+.sim-val { font-family: var(--font-mono); font-size: 11px; width: 36px; text-align: right; color: var(--text-secondary); flex-shrink: 0; }
+
+/* ── Wide: 2 columns for state grid ── */
+.cq-wide .twin-state-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Large non-wide: 3 columns ── */
+.cq-lg:not(.cq-wide) .twin-state-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Medium ── */
+.cq-md:not(.cq-lg) .twin-state-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Small ── */
+.cq-sm .twin-state-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Extra small: 1 column grid ── */
+.cq-xs .twin-state-grid {
+  grid-template-columns: 1fr;
+}
+
+.cq-xs .twin-row { padding: 3px 6px; }
+.cq-xs .twin-mode-selector .btn { font-size: 11px; }
+
+.twin-reset-btn { width: 100%; }
+

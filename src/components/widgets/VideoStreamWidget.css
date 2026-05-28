@@ -1,6 +1,16 @@
-.stream-widget { display: flex; flex-direction: column; gap: 8px; }
+.stream-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+}
 
-.stream-tabs { display: flex; gap: 4px; }
+.stream-tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
 
 .stream-tab {
   padding: 4px 10px;
@@ -10,6 +20,7 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .stream-tab.active {
@@ -20,8 +31,8 @@
 
 .stream-viewport {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
+  flex: 1;
+  min-height: 0;
   background: #0a0a0a;
   border-radius: var(--radius);
   overflow: hidden;
@@ -36,6 +47,8 @@
 .stream-img {
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   transform-origin: center center;
   user-select: none;
@@ -53,14 +66,14 @@
   font-size: 13px;
 }
 
-.stream-placeholder-icon { font-size: 32px; }
+.stream-placeholder-icon { font-size: 28px; }
 .stream-placeholder-sub { font-size: 11px; color: #444; }
 
 .stream-overlay-topic {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(0,0,0,0.6);
+  top: 6px;
+  left: 6px;
+  background: rgba(0,0,0,0.65);
   color: #ccc;
   font-size: 10px;
   font-family: var(--font-mono);
@@ -73,11 +86,18 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 }
 
-.zoom-label { font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); width: 40px; text-align: center; }
+.zoom-label {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  width: 40px;
+  text-align: center;
+}
 
-.stream-header-actions { display: flex; align-items: center; gap: 8px; }
+.stream-header-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
 .live-dot {
   width: 8px; height: 8px;
@@ -106,3 +126,16 @@
   border-radius: 3px;
   border: 1px solid var(--border);
 }
+
+/* ── Small: hide res badge, compact zoom bar ── */
+.cq-sm .res-badge { display: none; }
+.cq-sm .stream-tab { font-size: 11px; padding: 3px 7px; }
+
+/* ── Extra small: hide zoom bar text ── */
+.cq-xs .zoom-label { display: none; }
+.cq-xs .fps-badge, .cq-xs .res-badge { display: none; }
+.cq-xs .stream-tabs { gap: 2px; }
+.cq-xs .stream-tab { font-size: 10px; padding: 2px 5px; }
+
+/* ── Wide: viewport gets more height ── */
+.cq-wide .stream-viewport { aspect-ratio: unset; }

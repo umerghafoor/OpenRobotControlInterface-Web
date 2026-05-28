@@ -27,6 +27,19 @@ export function RobotMapWidget() {
   const poseRef = useRef<Pose>({ x: 0, y: 0, heading: 0 })
   const [coords, setCoords] = useState({ x: 0, y: 0 })
 
+  // Keep canvas resolution in sync with its CSS size
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ro = new ResizeObserver(() => {
+      const { width, height } = canvas.getBoundingClientRect()
+      if (width > 0) canvas.width = Math.round(width)
+      if (height > 0) canvas.height = Math.round(height)
+    })
+    ro.observe(canvas)
+    return () => ro.disconnect()
+  }, [])
+
   useEffect(() => {
     function onCoords({ x, y }: { x: number; y: number }) {
       poseRef.current.x = x
@@ -110,7 +123,7 @@ export function RobotMapWidget() {
       <button className="btn btn-sm" onClick={clearTrail}>Clear</button>
     }>
       <div className="robot-map">
-        <canvas ref={canvasRef} width={400} height={300} className="map-canvas" />
+        <canvas ref={canvasRef} className="map-canvas" />
         <div className="map-coords">
           <span className="label">X</span><span className="value">{coords.x.toFixed(3)} m</span>
           <span className="label">Y</span><span className="value">{coords.y.toFixed(3)} m</span>

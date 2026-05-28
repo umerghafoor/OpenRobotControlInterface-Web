@@ -103,6 +103,7 @@ function MiniGraph({ label, color, data }: GraphProps) {
 
 export function IMU3DWidget() {
   const cubeRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const dataRef = useRef<{ ax: number[]; ay: number[]; az: number[]; gx: number[]; gy: number[]; gz: number[] }>({
     ax: [], ay: [], az: [], gx: [], gy: [], gz: [],
   })
@@ -117,6 +118,21 @@ export function IMU3DWidget() {
     }
     ros2Bridge.on('imuData', onIMU)
     return () => ros2Bridge.off('imuData', onIMU)
+  }, [])
+
+  // Sync canvas resolution to its CSS size
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const ro = new ResizeObserver(() => {
+      const canvas = cubeRef.current
+      if (!canvas) return
+      const { width, height } = canvas.getBoundingClientRect()
+      canvas.width  = Math.round(width)  || 160
+      canvas.height = Math.round(height) || 160
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
   }, [])
 
   useEffect(() => {
@@ -145,8 +161,8 @@ export function IMU3DWidget() {
   return (
     <Panel title="IMU 3D View" icon="compass">
       <div className="imu3d">
-        <div className="cube-container">
-          <canvas ref={cubeRef} width={160} height={160} className="cube-canvas" />
+        <div ref={containerRef} className="cube-container">
+          <canvas ref={cubeRef} className="cube-canvas" />
         </div>
         <div className="imu-graphs">
           <MiniGraph label="Ax" color="#3b82f6" data={snapshot.ax} />

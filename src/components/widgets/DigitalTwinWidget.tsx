@@ -165,7 +165,7 @@ export function DigitalTwinWidget() {
           </div>
         )}
 
-        <button className="btn btn-sm" style={{ marginTop: 4 }} onClick={reset}>Reset State</button>
+        <button className="btn btn-sm twin-reset-btn" onClick={reset}>Reset State</button>
       </div>
     </Panel>
   )

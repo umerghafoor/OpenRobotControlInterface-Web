@@ -1,8 +1,15 @@
-.robot-map { display: flex; flex-direction: column; gap: 8px; }
+.robot-map {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
 
 .map-canvas {
+  flex: 1;
+  min-height: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: var(--radius);
   background: var(--bg-secondary);
   border: 1px solid var(--border);
@@ -10,9 +17,20 @@
 }
 
 .map-coords {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono); font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .map-coords .label { color: var(--text-muted); }
 .map-coords .value { color: var(--text-primary); }
+
+/* ── Extra small: hide coords ── */
+.cq-xs .map-coords { display: none; }
+
+/* ── Small: compact coords ── */
+.cq-sm .map-coords { font-size: 10px; gap: 6px; }

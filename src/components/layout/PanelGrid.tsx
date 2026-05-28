@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Icon, type IconName } from '@/components/ui/Icon'
+import { useContainerSize, sizeClasses } from '@/hooks/useContainerSize'
 import './PanelGrid.css'
 
 interface PanelProps {
@@ -11,6 +12,7 @@ interface PanelProps {
 }
 
 export function Panel({ title, icon, children, className = '', headerExtra }: PanelProps) {
+  const { ref, size } = useContainerSize<HTMLDivElement>()
   return (
     <div className={`panel ${className}`}>
       <div className="panel-header">
@@ -20,7 +22,7 @@ export function Panel({ title, icon, children, className = '', headerExtra }: Pa
         </span>
         {headerExtra && <div className="panel-header-extra">{headerExtra}</div>}
       </div>
-      <div className="panel-body">{children}</div>
+      <div ref={ref} className={`panel-body ${sizeClasses(size)}`}>{children}</div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { ros2Bridge } from '@/ros2/ROS2Bridge'
 import { Panel } from '@/components/layout/PanelGrid'
+import { Icon } from '@/components/ui/Icon'
 import './VideoStreamWidget.css'
 
 const TOPICS = [
@@ -131,7 +132,7 @@ export function VideoStreamWidget() {
             />
           ) : (
             <div className="stream-placeholder">
-              <span className="stream-placeholder-icon">📷</span>
+              <span className="stream-placeholder-icon"><Icon name="camera" size={28} /></span>
               <span>{TOPICS[activeIdx].label}</span>
               <span className="stream-placeholder-sub">No signal</span>
             </div>

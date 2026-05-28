@@ -1,10 +1,12 @@
-.cmd-control { display: flex; flex-direction: column; gap: 12px; }
+.cmd-control { display: flex; flex-direction: column; gap: 10px; }
 
 .velocity-sliders { display: flex; flex-direction: column; gap: 10px; }
 
 .vel-group { display: flex; flex-direction: column; gap: 4px; }
 
-.vel-label { display: flex; align-items: center; justify-content: space-between; }
+.vel-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.vel-label .label { font-size: 11px; color: var(--text-secondary); white-space: nowrap; flex-shrink: 0; }
+.vel-label .value { font-size: 11px; font-family: var(--font-mono); color: var(--text-primary); white-space: nowrap; }
 
 .vel-slider {
   width: 100%;
@@ -13,6 +15,21 @@
   cursor: pointer;
 }
 
-.cmd-buttons { display: flex; gap: 8px; }
+.cmd-buttons { display: flex; gap: 6px; }
+.cmd-buttons .btn { flex: 1; min-width: 0; }
 
-.cmd-input-row { display: flex; gap: 8px; align-items: center; }
+.cmd-input-row { display: flex; gap: 6px; align-items: center; }
+.cmd-input-row input { flex: 1; min-width: 0; }
+
+/* ── Wide layout: two velocity columns ── */
+.cq-wide .velocity-sliders {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.cq-wide .vel-group { flex: 1; min-width: 0; }
+
+/* ── Extra small ── */
+.cq-xs .vel-label .label { font-size: 10px; }
+.cq-xs .cmd-buttons { flex-direction: column; }
+.cq-xs .cmd-buttons .btn { width: 100%; }

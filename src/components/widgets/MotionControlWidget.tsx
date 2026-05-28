@@ -110,37 +110,39 @@ export function MotionControlWidget() {
           ))}
         </div>
 
-        <div className="spin-buttons">
-          <button
-            className={`dpad-btn spin-btn ${active === 'spinLeft' ? 'active' : ''}`}
-            onPointerDown={() => startDir('spinLeft')}
-            onPointerUp={stopDir}
-            onPointerLeave={stopDir}
-          >↺ Spin L</button>
-          <button
-            className={`dpad-btn spin-btn ${active === 'spinRight' ? 'active' : ''}`}
-            onPointerDown={() => startDir('spinRight')}
-            onPointerUp={stopDir}
-            onPointerLeave={stopDir}
-          >↻ Spin R</button>
-        </div>
-
-        <div className="slider-group">
-          <div className="slider-row">
-            <label className="label">Speed</label>
-            <input type="range" min={0} max={1} step={0.05} value={speed} onChange={e => setSpeed(+e.target.value)} />
-            <span className="value">{speed.toFixed(2)}</span>
+        <div className="motion-side">
+          <div className="spin-buttons">
+            <button
+              className={`dpad-btn spin-btn ${active === 'spinLeft' ? 'active' : ''}`}
+              onPointerDown={() => startDir('spinLeft')}
+              onPointerUp={stopDir}
+              onPointerLeave={stopDir}
+            >↺ Spin L</button>
+            <button
+              className={`dpad-btn spin-btn ${active === 'spinRight' ? 'active' : ''}`}
+              onPointerDown={() => startDir('spinRight')}
+              onPointerUp={stopDir}
+              onPointerLeave={stopDir}
+            >↻ Spin R</button>
           </div>
-          <div className="slider-row">
-            <label className="label">Radius (m)</label>
-            <input type="range" min={0.1} max={5} step={0.1} value={radius} onChange={e => setRadius(+e.target.value)} />
-            <span className="value">{radius.toFixed(1)}</span>
-          </div>
-        </div>
 
-        <button className="btn btn-danger" style={{ width: '100%', marginTop: 8 }} onClick={handleStop}>
-          Emergency Stop
-        </button>
+          <div className="slider-group">
+            <div className="slider-row">
+              <label className="label">Speed</label>
+              <input type="range" min={0} max={1} step={0.05} value={speed} onChange={e => setSpeed(+e.target.value)} />
+              <span className="value">{speed.toFixed(2)}</span>
+            </div>
+            <div className="slider-row">
+              <label className="label">Radius</label>
+              <input type="range" min={0.1} max={5} step={0.1} value={radius} onChange={e => setRadius(+e.target.value)} />
+              <span className="value">{radius.toFixed(1)}</span>
+            </div>
+          </div>
+
+          <button className="btn btn-danger" style={{ width: '100%' }} onClick={handleStop}>
+            Emergency Stop
+          </button>
+        </div>
       </div>
     </Panel>
   )

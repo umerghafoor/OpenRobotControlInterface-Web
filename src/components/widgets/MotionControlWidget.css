@@ -1,24 +1,38 @@
-.motion-control { display: flex; flex-direction: column; gap: 12px; }
+.motion-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
 
+/* ── D-pad ── */
 .dpad {
   display: grid;
-  grid-template-columns: repeat(3, 64px);
-  grid-template-rows: repeat(3, 64px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 4px;
-  justify-content: center;
+  width: 100%;
+  /* square bounding box: limit height to match whatever columns resolve to */
+  aspect-ratio: 1;
+  max-height: 220px;
+  max-width: 220px;
+  align-self: center;
 }
 
 .dpad-btn {
-  width: 64px; height: 64px;
   border-radius: var(--radius);
   background: var(--bg-hover);
   border: 1px solid var(--border);
   color: var(--text-primary);
   font-size: 22px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   user-select: none;
   touch-action: none;
   transition: background 0.1s, transform 0.08s;
+  width: 100%;
+  height: 100%;
 }
 
 .dpad-btn:hover { background: var(--bg-active); }
@@ -26,18 +40,77 @@
 .dpad-center { background: var(--bg-secondary); border-color: var(--border); font-size: 16px; }
 .dpad-center:hover { background: var(--error); color: white; }
 
-.spin-buttons { display: flex; gap: 8px; }
-.spin-btn { flex: 1; height: 40px; font-size: 13px; width: auto; }
+/* ── Spin buttons ── */
+.spin-buttons {
+  display: flex;
+  gap: 6px;
+}
 
-.slider-group { display: flex; flex-direction: column; gap: 8px; }
+.spin-btn {
+  flex: 1;
+  height: 36px;
+  font-size: 12px;
+  width: auto;
+  white-space: nowrap;
+}
+
+/* ── Sliders ── */
+.slider-group { display: flex; flex-direction: column; gap: 6px; }
+
 .slider-row { display: flex; align-items: center; gap: 8px; }
-.slider-row input[type=range] { flex: 1; accent-color: var(--accent); }
-.slider-row .value { width: 38px; text-align: right; font-size: 12px; font-family: var(--font-mono); color: var(--text-secondary); }
-.slider-row .label { width: 70px; flex-shrink: 0; }
+.slider-row input[type=range] { flex: 1; accent-color: var(--accent); min-width: 0; }
+.slider-row .value {
+  width: 36px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+.slider-row .label {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
 
+/* ── Pin toggle ── */
 .pin-toggle {
   display: flex; align-items: center; gap: 4px;
   font-size: 12px; cursor: pointer; color: var(--text-secondary);
   font-weight: 500;
 }
 .pin-toggle input { accent-color: var(--accent); }
+
+/* ── Wide layout (panel wider than tall): side-by-side dpad + controls ── */
+.cq-wide .motion-control {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cq-wide .dpad {
+  max-height: 180px;
+  max-width: 180px;
+  flex-shrink: 0;
+}
+
+.cq-wide .motion-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* ── Extra small: collapse spin labels ── */
+.cq-xs .spin-btn { font-size: 11px; height: 30px; }
+.cq-xs .slider-row .label { display: none; }
+.cq-xs .dpad { max-height: 160px; max-width: 160px; }
+
+/* ── Small ── */
+.cq-sm .dpad { max-height: 180px; max-width: 180px; }
+
+/* ── Large: bigger dpad ── */
+.cq-lg .dpad { max-height: none; max-width: 260px; }
+.cq-lg .spin-btn { height: 40px; font-size: 13px; }
