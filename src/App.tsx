@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { WidthProvider, ResponsiveReactGridLayout } from 'react-grid-layout/legacy'
 import type { Layout, ResponsiveLayouts, LayoutItem } from 'react-grid-layout'
 import { Header, type PanelId } from '@/components/layout/Header'
-import { PreferencesModal } from '@/components/layout/PreferencesModal'
+import { SettingsPanel } from '@/components/layout/SettingsPanel'
 import { MotionControlWidget } from '@/components/widgets/MotionControlWidget'
 import { CommandControlWidget } from '@/components/widgets/CommandControlWidget'
 import { SensorDataWidget } from '@/components/widgets/SensorDataWidget'
@@ -11,6 +11,8 @@ import { IMU3DWidget } from '@/components/widgets/IMU3DWidget'
 import { DetectionPanelWidget } from '@/components/widgets/DetectionPanelWidget'
 import { RobotMapWidget } from '@/components/widgets/RobotMapWidget'
 import { DigitalTwinWidget } from '@/components/widgets/DigitalTwinWidget'
+import { useSettings } from '@/context/SettingsContext'
+import { ros2Bridge } from '@/ros2/ROS2Bridge'
 import './App.css'
 
 // @ts-ignore
@@ -69,16 +71,13 @@ const LAYOUT_KEY  = 'orc-grid-layouts'
 const VISIBLE_KEY = 'orc-visible-panels'
 
 function loadLayouts(): ResponsiveLayouts | null {
-  try {
-    const raw = localStorage.getItem(LAYOUT_KEY)
-    return raw ? JSON.parse(raw) as ResponsiveLayouts : null
-  } catch { return null }
+  try { const r = localStorage.getItem(LAYOUT_KEY); return r ? JSON.parse(r) : null } catch { return null }
 }
 
 function loadVisible(): Set<PanelId> {
   try {
-    const raw = localStorage.getItem(VISIBLE_KEY)
-    if (raw) return new Set(JSON.parse(raw) as PanelId[])
+    const r = localStorage.getItem(VISIBLE_KEY)
+    if (r) return new Set(JSON.parse(r) as PanelId[])
   } catch { /* ignore */ }
   return new Set<PanelId>(['motion', 'sensor', 'video', 'imu3d', 'detection', 'map', 'twin'])
 }
@@ -99,6 +98,12 @@ function PanelComponent({ id }: { id: PanelId }) {
 export function App() {
   const [visible, setVisible] = useState<Set<PanelId>>(loadVisible)
   const [layouts, setLayouts] = useState<ResponsiveLayouts>(() => loadLayouts() ?? DEFAULT_LAYOUTS)
+  const { settings } = useSettings()
+
+  // Push topic map into bridge whenever settings change
+  useEffect(() => {
+    ros2Bridge.applyTopicMap(settings.topicMap)
+  }, [settings.topicMap])
 
   function togglePanel(id: PanelId) {
     setVisible(prev => {
@@ -128,13 +133,8 @@ export function App() {
 
   return (
     <div className="app-root">
-      <Header
-        visible={visible}
-        onTogglePanel={togglePanel}
-        onResetLayout={resetLayout}
-      />
-      <PreferencesModal />
-
+      <Header visible={visible} onTogglePanel={togglePanel} onResetLayout={resetLayout} />
+      <SettingsPanel />
       <main className="app-main">
         <ResponsiveGrid
           className="rgl-grid"

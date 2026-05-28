@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { useROS2Status } from '@/ros2/useROS2'
-import { useTheme, THEMES } from '@/context/ThemeContext'
+import { useSettings, THEMES } from '@/context/SettingsContext'
 import { Icon } from '@/components/ui/Icon'
 import './Header.css'
 
@@ -36,29 +35,26 @@ interface HeaderProps {
 
 export function Header({ visible, onTogglePanel, onResetLayout }: HeaderProps) {
   const { status, connect, disconnect } = useROS2Status()
-  const { prefs, openPreferences } = useTheme()
-  const [url, setUrl] = useState('ws://localhost:9090')
-  const [showUrlInput, setShowUrlInput] = useState(false)
+  const { settings, openSettings } = useSettings()
 
-  const isConnected = status === 'connected'
+  const isConnected  = status === 'connected'
   const isConnecting = status === 'connecting'
 
-  function handleToggle() {
+  function handleConnectToggle() {
     if (isConnected) disconnect()
-    else connect(url)
+    else connect(settings.connection.bridgeUrl)
   }
 
   const statusClass = isConnected ? 'connected' : status === 'error' ? 'error' : isConnecting ? 'connecting' : 'disconnected'
   const statusText  = isConnected ? 'Online' : isConnecting ? 'Connecting…' : status === 'error' ? 'Error' : 'Offline'
-  const currentTheme = THEMES.find(t => t.id === prefs.theme)
+  const currentTheme = THEMES.find(t => t.id === settings.appearance.theme)
 
   return (
     <header className="app-header">
+
       {/* Brand */}
       <div className="header-brand">
-        <span className="header-logo">
-          <Icon name="robot" size={18} />
-        </span>
+        <span className="header-logo"><Icon name="robot" size={18} /></span>
         <span className="header-title">OpenRobotControl</span>
         <span className="header-subtitle">Open Source</span>
       </div>
@@ -80,74 +76,52 @@ export function Header({ visible, onTogglePanel, onResetLayout }: HeaderProps) {
             <span className="panel-chip-label">{PANEL_LABELS[id]}</span>
           </button>
         ))}
-        <button
-          className="panel-chip reset-chip"
-          onClick={onResetLayout}
-          title="Reset layout"
-        >
+        <button className="panel-chip reset-chip" onClick={onResetLayout} title="Reset layout">
           <Icon name="reset" size={12} />
         </button>
       </div>
 
       {/* Right actions */}
       <div className="header-actions">
-        {/* ROS2 status badge */}
-        <div className={`ros2-status ${statusClass}`}>
+
+        {/* ROS2 status — clicking opens connection tab */}
+        <button
+          className={`ros2-status ${statusClass}`}
+          onClick={() => openSettings('connection')}
+          title="Open connection settings"
+        >
           <span className={`dot dot-${isConnected ? 'green' : isConnecting ? 'yellow' : 'gray'}`} />
           <span>ROS2</span>
           <span className="ros2-status-text">{statusText}</span>
-        </div>
-
-        {showUrlInput && (
-          <input
-            className="url-input"
-            value={url}
-            onChange={e => setUrl(e.target.value)}
-            onKeyDown={e => {
-              if (e.key === 'Enter') { setShowUrlInput(false); connect(url) }
-              if (e.key === 'Escape') setShowUrlInput(false)
-            }}
-            placeholder="ws://localhost:9090"
-            autoFocus
-          />
-        )}
-
-        {!isConnected && (
-          <button
-            className="btn btn-sm header-icon-btn"
-            onClick={() => setShowUrlInput(v => !v)}
-            title="Set rosbridge URL"
-          >
-            <Icon name="gear" size={14} />
-          </button>
-        )}
+        </button>
 
         <button
           className={`btn btn-sm ${isConnected ? 'btn-danger' : 'btn-primary'} header-connect-btn`}
-          onClick={handleToggle}
+          onClick={handleConnectToggle}
           disabled={isConnecting}
         >
           {isConnecting
             ? <><Icon name="loader" size={13} className="spin" />Connecting…</>
             : isConnected
               ? <><Icon name="plug-off" size={13} />Disconnect</>
-              : <><Icon name="plug" size={13} />Connect</>
+              : <><Icon name="plug"     size={13} />Connect</>
           }
         </button>
 
+        {/* Single settings button */}
         <button
-          className="btn btn-sm header-theme-btn"
-          onClick={openPreferences}
-          title={`Theme: ${currentTheme?.name ?? prefs.theme}`}
+          className="btn btn-sm header-settings-btn"
+          onClick={() => openSettings('appearance')}
+          title="Settings"
         >
           <span
             className="header-theme-dot"
             style={{ background: currentTheme?.preview.accent ?? 'var(--accent)' }}
           />
-          <Icon name="palette" size={13} />
-          <span className="header-theme-name">{currentTheme?.name ?? prefs.theme}</span>
+          <Icon name="gear" size={14} />
           <Icon name="chevron-down" size={11} className="header-theme-caret" />
         </button>
+
       </div>
     </header>
   )
