@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react'
 import { WidthProvider, ResponsiveReactGridLayout } from 'react-grid-layout/legacy'
 import type { Layout, ResponsiveLayouts, LayoutItem } from 'react-grid-layout'
 import { Header } from '@/components/layout/Header'
+import { PreferencesModal } from '@/components/layout/PreferencesModal'
 import { MotionControlWidget } from '@/components/widgets/MotionControlWidget'
 import { CommandControlWidget } from '@/components/widgets/CommandControlWidget'
 import { SensorDataWidget } from '@/components/widgets/SensorDataWidget'
@@ -142,6 +143,7 @@ export function App() {
   return (
     <div className="app-root">
       <Header />
+      <PreferencesModal />
       <div className="app-toolbar">
         <span className="toolbar-title">Panels</span>
         {ALL_PANELS.map(p => (
