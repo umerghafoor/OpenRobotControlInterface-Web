@@ -9,17 +9,21 @@ interface PanelProps {
   children: ReactNode
   className?: string
   headerExtra?: ReactNode
+  /** Replaces the entire title span with custom content (e.g. editable input) */
+  titleNode?: ReactNode
 }
 
-export function Panel({ title, icon, children, className = '', headerExtra }: PanelProps) {
+export function Panel({ title, icon, children, className = '', headerExtra, titleNode }: PanelProps) {
   const { ref, size } = useContainerSize<HTMLDivElement>()
   return (
     <div className={`panel ${className}`}>
       <div className="panel-header">
-        <span className="panel-header-title">
-          {icon && <Icon name={icon} size={14} className="panel-header-icon" />}
-          {title}
-        </span>
+        {titleNode ?? (
+          <span className="panel-header-title">
+            {icon && <Icon name={icon} size={14} className="panel-header-icon" />}
+            {title}
+          </span>
+        )}
         {headerExtra && <div className="panel-header-extra">{headerExtra}</div>}
       </div>
       <div ref={ref} className={`panel-body ${sizeClasses(size)}`}>{children}</div>

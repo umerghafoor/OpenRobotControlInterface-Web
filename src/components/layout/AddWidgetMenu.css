@@ -1,0 +1,97 @@
+.awm-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.awm-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.awm-trigger:hover, .awm-trigger.open {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.awm-label { display: none; }
+@media (min-width: 900px) { .awm-label { display: inline; } }
+
+.awm-caret { transition: transform 0.15s; flex-shrink: 0; }
+.awm-caret.flipped { transform: rotate(180deg); }
+
+/* ── Dropdown menu ── */
+.awm-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 800;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--panel-shadow-lg), 0 8px 32px rgba(0,0,0,0.3);
+  min-width: 260px;
+  overflow: hidden;
+  animation: awm-pop 0.14s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes awm-pop {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px) }
+  to   { opacity: 1; transform: scale(1)    translateY(0) }
+}
+
+.no-animations .awm-menu { animation: none }
+
+.awm-menu-header {
+  padding: 10px 14px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.awm-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.1s;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.awm-item:last-child { border-bottom: none; }
+.awm-item:hover { background: var(--bg-hover); }
+
+.awm-item-icon {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.awm-item-text { display: flex; flex-direction: column; gap: 1px; }
+.awm-item-label { font-size: 13px; font-weight: 600; }
+.awm-item-desc  { font-size: 11px; color: var(--text-muted); }

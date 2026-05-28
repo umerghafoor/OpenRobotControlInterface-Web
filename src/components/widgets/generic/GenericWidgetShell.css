@@ -1,0 +1,58 @@
+.gws-title {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.gws-title:hover .gws-edit-hint { opacity: 0.5; }
+
+.gws-edit-hint {
+  opacity: 0;
+  transition: opacity 0.15s;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.gws-title-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 6px;
+  outline: none;
+  min-width: 0;
+  flex: 1;
+  max-width: 200px;
+}
+
+.gws-header-extras {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gws-config-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+
+.gws-config-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border);
+  color: var(--text-primary);
+}

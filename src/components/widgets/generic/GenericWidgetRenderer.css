@@ -1,0 +1,66 @@
+.gwr-missing {
+  padding: 12px;
+  font-size: 12px;
+  color: var(--error);
+  font-family: var(--font-mono);
+}
+
+/* ── Sliders ── */
+.gwr-sliders { display: flex; flex-direction: column; gap: 10px; }
+
+/* ── Buttons ── */
+.gwr-buttons {
+  display: grid;
+  gap: 6px;
+}
+
+/* ── Display ── */
+.gwr-display {
+  display: grid;
+  gap: 6px;
+}
+
+/* ── Graph ── */
+.gwr-graph {
+  height: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gwr-graph .gc-graph-wrap { flex: 1; }
+
+/* ── Gauges ── */
+.gwr-gauges {
+  display: grid;
+  gap: 10px;
+  align-items: start;
+}
+
+/* ── Group ── */
+.gwr-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gwr-group-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gwr-group-slot {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+}
+
+.gwr-group-empty,
+.gwr-group-missing {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px 0;
+  font-style: italic;
+}

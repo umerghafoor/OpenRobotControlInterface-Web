@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react'
 import { useROS2Status } from '@/ros2/useROS2'
 import { useSettings, THEMES } from '@/context/SettingsContext'
 import { Icon } from '@/components/ui/Icon'
@@ -31,9 +32,10 @@ interface HeaderProps {
   visible: Set<PanelId>
   onTogglePanel: (id: PanelId) => void
   onResetLayout: () => void
+  addWidgetSlot?: ReactNode
 }
 
-export function Header({ visible, onTogglePanel, onResetLayout }: HeaderProps) {
+export function Header({ visible, onTogglePanel, onResetLayout, addWidgetSlot }: HeaderProps) {
   const { status, connect, disconnect } = useROS2Status()
   const { settings, openSettings } = useSettings()
 
@@ -83,6 +85,7 @@ export function Header({ visible, onTogglePanel, onResetLayout }: HeaderProps) {
 
       {/* Right actions */}
       <div className="header-actions">
+        {addWidgetSlot}
 
         {/* ROS2 status — clicking opens connection tab */}
         <button
